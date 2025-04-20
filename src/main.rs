@@ -36,8 +36,9 @@ fn get_nanoseconds() -> i64 {
 
 #[unsafe(no_mangle)]
 pub extern "C" fn _start() -> ! {
-    let rng_seed = get_random_u64().unwrap();
-    let vanity_prefix = b"aaaa";
+    //let rng_seed = get_random_u64().unwrap();
+    let rng_seed = 2457272140905572020;
+    let vanity_prefix = b"aa";
     let start = get_nanoseconds();
     libc_println!("[{start}] start rng_seed: {rng_seed} vanity_prefix: {vanity_prefix:02x?}");
     let num_iterations = common::find_vanity_private_key(vanity_prefix, rng_seed);

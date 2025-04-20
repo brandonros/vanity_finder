@@ -1,14 +1,14 @@
 use ed25519_compact::ge_scalarmult_base;
 use ed25519_compact::sha512::Hash;
-use rand_xoshiro::rand_core::{RngCore as _, SeedableRng};
-use rand_xoshiro::Xoshiro256StarStar;
+use rand_core::{SeedableRng, RngCore};
+use rand_xorshift::XorShiftRng;
 use bs58;
 use libc_print::libc_println;
 
 pub fn find_vanity_private_key(vanity_prefix: &[u8], rng_seed: u64) -> u64 {
     let vanity_prefix_len = vanity_prefix.len();
 
-    let mut rng = Xoshiro256StarStar::seed_from_u64(rng_seed);
+    let mut rng = XorShiftRng::seed_from_u64(rng_seed);
     let mut hasher = Hash::new();
     let mut private_key = [0u8; 32];
     let mut bs58_encoded_public_key = [0u8; 44];

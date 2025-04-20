@@ -7,7 +7,8 @@ edition = "2024"
 libc = { version = "0.2", default-features = false }
 ed25519-compact = { git = "https://github.com/brandonros/rust-ed25519-compact.git", rev = "7605359ed8508d4cef3b958157ad41108261f8d1", default-features = false }
 bs58 = { version = "0.5.1", default-features = false }
-rand_xoshiro = { version = "0.7.0", default-features = false }
+rand_core = { version = "0.9.3" }
+rand_xorshift = { version = "0.4.0", default-features = false }
 panic-no-std = "0.1.0"
 libc-print = "0.1.23"
 libc_alloc = "1.0.7"
